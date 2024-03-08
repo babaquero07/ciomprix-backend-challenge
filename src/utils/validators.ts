@@ -1,5 +1,10 @@
 import { NextFunction, Request, Response } from "express";
-import { body, ValidationChain, validationResult } from "express-validator";
+import {
+  body,
+  query,
+  ValidationChain,
+  validationResult,
+} from "express-validator";
 
 export const validate = (validations: ValidationChain[]) => {
   return async (req: Request, res: Response, next: NextFunction) => {
@@ -79,6 +84,14 @@ export const studentsOnSubjectsValidator = [
     .trim()
     .isString(),
   body("subjectId")
+    .notEmpty()
+    .withMessage("Subject id is required")
+    .trim()
+    .isString(),
+];
+
+export const newEvidenceValidator = [
+  query("subjectId")
     .notEmpty()
     .withMessage("Subject id is required")
     .trim()
