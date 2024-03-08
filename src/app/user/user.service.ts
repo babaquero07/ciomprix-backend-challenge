@@ -31,4 +31,26 @@ export class UserService {
       throw new Error("Error creating user");
     }
   }
+
+  async getUserById(id: string) {
+    try {
+      const user = await prisma.user.findUnique({
+        where: {
+          id,
+        },
+        select: {
+          id: true,
+          email: true,
+          first_name: true,
+          role: true,
+        },
+      });
+
+      return user;
+    } catch (error) {
+      console.log(error);
+
+      throw new Error("Error getting user with id: " + id);
+    }
+  }
 }
