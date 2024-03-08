@@ -1,4 +1,4 @@
-# Tres pi medios - Challenge
+# Ciomprix - Challenge
 
 ## Backend
 
