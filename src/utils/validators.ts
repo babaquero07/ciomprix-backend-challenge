@@ -67,3 +67,7 @@ export const loginValidator = [
     .withMessage("Password is required")
     .isString(),
 ];
+
+export const subjectValidator = [
+  body("name").notEmpty().withMessage("Name is required").trim().isString(),
+];
