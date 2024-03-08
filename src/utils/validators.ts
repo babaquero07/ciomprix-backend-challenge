@@ -55,3 +55,15 @@ export const signupValidator = [
     .withMessage("Birth date is required")
     .isISO8601(),
 ];
+
+export const loginValidator = [
+  body("email")
+    .isEmail()
+    .withMessage("Email is required")
+    .normalizeEmail()
+    .isString(),
+  body("password")
+    .isLength({ min: 8 })
+    .withMessage("Password is required")
+    .isString(),
+];

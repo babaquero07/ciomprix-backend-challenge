@@ -2,7 +2,11 @@ import { Request, Response, Router } from "express";
 
 import { AuthService } from "../auth/auth.service";
 
-import { validate, signupValidator } from "../../utils/validators";
+import {
+  validate,
+  signupValidator,
+  loginValidator,
+} from "../../utils/validators";
 
 // import { verifyToken } from "../../utils/token-manager";
 import { UserService } from "./user.service";
@@ -58,6 +62,52 @@ userRouter.post(
       return res
         .status(201)
         .send({ ok: true, message: "User created", newUser });
+    } catch (error) {
+      console.log(error);
+
+      return res
+        .status(500)
+        .send({ ok: false, message: "Internal server error" });
+    }
+  }
+);
+
+userRouter.post(
+  "/login",
+  validate(loginValidator),
+  async (req: Request, res: Response) => {
+    try {
+      const { email, password } = req.body;
+
+      const user = await userService.isUserRegister(email);
+      if (!user) {
+        return res.status(404).send({ ok: false, message: "User not found" });
+      }
+
+      const isPasswordValid = AuthService.isPasswordValid(
+        password,
+        user.password
+      );
+      if (!isPasswordValid) {
+        return res.status(401).send({ ok: false, message: "Invalid password" });
+      }
+
+      // Clear Cookie
+      AuthService.clearCookie(res);
+
+      // Create token and send it as a cookie
+      AuthService.createAndSendToken(res, user.id, user.email, user.role);
+
+      return res.status(200).send({
+        ok: true,
+        message: "User logged in",
+        user: {
+          id: user.id,
+          first_name: user.first_name,
+          email: user.email,
+          role: user.role,
+        },
+      });
     } catch (error) {
       console.log(error);
 

@@ -2,6 +2,7 @@ import { Response } from "express";
 
 import { COOKIE_NAME } from "../../utils/constants";
 import { createToken } from "../../utils/token-manager";
+import bcryptjs from "bcryptjs";
 
 export class AuthService {
   static clearCookie = (res: Response) => {
@@ -35,4 +36,8 @@ export class AuthService {
       signed: true,
     });
   };
+
+  static isPasswordValid(password: string, userPassword: string) {
+    return bcryptjs.compareSync(password, userPassword);
+  }
 }
