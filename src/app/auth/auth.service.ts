@@ -1,8 +1,12 @@
-import { Response } from "express";
+import { Response, Request, NextFunction } from "express";
+
+import { UserService } from "../user/user.service";
 
 import { COOKIE_NAME } from "../../utils/constants";
 import { createToken } from "../../utils/token-manager";
 import bcryptjs from "bcryptjs";
+
+const userService = new UserService();
 
 export class AuthService {
   static clearCookie = (res: Response) => {
@@ -39,5 +43,25 @@ export class AuthService {
 
   static isPasswordValid(password: string, userPassword: string) {
     return bcryptjs.compareSync(password, userPassword);
+  }
+
+  static async checkAdminAuthorization(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ) {
+    const { userId } = res.locals.jwtData;
+    const user = await userService.getUserById(userId);
+    if (!user) {
+      return res.status(404).send({ ok: false, message: "User not found" });
+    }
+
+    if (user.role !== "admin") {
+      return res
+        .status(403)
+        .send({ ok: false, message: "User is not authorized" });
+    }
+
+    next();
   }
 }
