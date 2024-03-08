@@ -71,3 +71,16 @@ export const loginValidator = [
 export const subjectValidator = [
   body("name").notEmpty().withMessage("Name is required").trim().isString(),
 ];
+
+export const studentsOnSubjectsValidator = [
+  body("studentId")
+    .notEmpty()
+    .withMessage("Student id is required")
+    .trim()
+    .isString(),
+  body("subjectId")
+    .notEmpty()
+    .withMessage("Subject id is required")
+    .trim()
+    .isString(),
+];

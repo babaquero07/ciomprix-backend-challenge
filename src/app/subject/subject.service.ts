@@ -14,4 +14,14 @@ export class SubjectService {
       console.log(error);
     }
   }
+
+  static async getSubjectById(id: string) {
+    const subject = await prisma.subject.findUnique({
+      where: {
+        id,
+      },
+    });
+
+    return subject;
+  }
 }
