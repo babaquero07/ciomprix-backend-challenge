@@ -17,4 +17,21 @@ export class EvidenceService {
       throw new Error("Error creating evidence");
     }
   }
+
+  async getNumberOfEvidencesOnSubject(userId: string, subjectId: string) {
+    try {
+      const numberOfEvidences = await prisma.evidence.count({
+        where: {
+          userId,
+          subjectId,
+        },
+      });
+
+      return numberOfEvidences;
+    } catch (error) {
+      console.log(error);
+
+      throw new Error("Error getting number of evidences");
+    }
+  }
 }

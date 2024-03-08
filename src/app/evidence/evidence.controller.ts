@@ -35,6 +35,18 @@ evidenceRouter.post(
       const { subjectId } = req.query;
       const { userId } = res.locals.jwtData;
 
+      const numberOfEvidencesOnSubject =
+        await evidenceService.getNumberOfEvidencesOnSubject(
+          userId,
+          subjectId.toString()
+        );
+
+      if (numberOfEvidencesOnSubject >= 5) {
+        return res.status(422).json({
+          message: "You can't upload more than 5 evidences for a subject",
+        });
+      }
+
       const newEvidence = await evidenceService.createEvidence({
         file_name,
         size: size.toString(),
