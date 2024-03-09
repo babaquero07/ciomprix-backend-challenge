@@ -159,4 +159,23 @@ userRouter.get(
   }
 );
 
+userRouter.get(
+  "/students-count",
+  verifyToken,
+  AuthService.checkAdminAuthorization,
+  async (req: Request, res: Response) => {
+    try {
+      const numberOfStudents = await userService.getNumberOfStudents();
+
+      return res.status(200).send({ ok: true, numberOfStudents });
+    } catch (error) {
+      console.log(error);
+
+      return res
+        .status(500)
+        .send({ ok: false, message: "Internal server error" });
+    }
+  }
+);
+
 export default userRouter;

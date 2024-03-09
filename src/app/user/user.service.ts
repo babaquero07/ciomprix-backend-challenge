@@ -81,4 +81,20 @@ export class UserService {
       throw new Error("Error getting students");
     }
   }
+
+  async getNumberOfStudents() {
+    try {
+      const numberOfStudents = await prisma.user.count({
+        where: {
+          role: "student",
+        },
+      });
+
+      return numberOfStudents;
+    } catch (error) {
+      console.log(error);
+
+      throw new Error("Error getting number of students");
+    }
+  }
 }
