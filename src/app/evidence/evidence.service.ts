@@ -34,4 +34,34 @@ export class EvidenceService {
       throw new Error("Error getting number of evidences");
     }
   }
+
+  async getAllEvidences() {
+    try {
+      const evidences = await prisma.evidence.findMany({
+        orderBy: [
+          {
+            user: {
+              email: "asc",
+            },
+          },
+          {
+            upload_date: "asc",
+          },
+        ],
+        include: {
+          user: {
+            select: {
+              email: true,
+            },
+          },
+        },
+      });
+
+      return evidences;
+    } catch (error) {
+      console.log(error);
+
+      throw new Error("Error getting evidences");
+    }
+  }
 }

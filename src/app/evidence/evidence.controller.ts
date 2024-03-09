@@ -4,6 +4,7 @@ import { EvidenceService } from "./evidence.service";
 import { validate, newEvidenceValidator } from "../../utils/validators";
 
 import { Format } from "./evidence.model";
+import { AuthService } from "../auth/auth.service";
 
 import multer from "multer";
 
@@ -58,6 +59,22 @@ evidenceRouter.post(
       return res
         .status(201)
         .json({ ok: true, message: "Evidence created", newEvidence });
+    } catch (error) {
+      console.log(error);
+
+      return res.status(500).json({ message: "Internal server error" });
+    }
+  }
+);
+
+evidenceRouter.get(
+  "/",
+  AuthService.checkAdminAuthorization,
+  async (req: Request, res: Response) => {
+    try {
+      const evidences = await evidenceService.getAllEvidences();
+
+      return res.status(200).json({ ok: true, evidences });
     } catch (error) {
       console.log(error);
 
