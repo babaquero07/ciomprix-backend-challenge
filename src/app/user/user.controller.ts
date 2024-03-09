@@ -178,4 +178,23 @@ userRouter.get(
   }
 );
 
+userRouter.get(
+  "/top-students",
+  verifyToken,
+  AuthService.checkAdminAuthorization,
+  async (req: Request, res: Response) => {
+    try {
+      const topStudents = await userService.getTopStudents();
+
+      return res.status(200).send({ ok: true, topStudents });
+    } catch (error) {
+      console.log(error);
+
+      return res
+        .status(500)
+        .send({ ok: false, message: "Internal server error" });
+    }
+  }
+);
+
 export default userRouter;

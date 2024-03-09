@@ -97,4 +97,49 @@ export class UserService {
       throw new Error("Error getting number of students");
     }
   }
+
+  async getTopStudents() {
+    try {
+      const topStudents = await prisma.user.findMany({
+        where: {
+          role: "student",
+        },
+        select: {
+          id: true,
+          first_name: true,
+          last_name: true,
+          email: true,
+          Evidence: {
+            select: {
+              id: true,
+              file_name: true,
+              format: true,
+            },
+          },
+        },
+        orderBy: {
+          Evidence: {
+            _count: "desc",
+          },
+        },
+        take: 10,
+      });
+
+      const formatedTopStudents = topStudents.map((student) => {
+        const { Evidence, ...rest } = student;
+
+        return {
+          ...rest,
+          evidences: Evidence,
+          numberOfEvidences: Evidence.length,
+        };
+      });
+
+      return formatedTopStudents;
+    } catch (error) {
+      console.log(error);
+
+      throw new Error("Error getting top students");
+    }
+  }
 }
