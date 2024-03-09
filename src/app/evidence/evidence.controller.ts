@@ -7,6 +7,7 @@ import { Format } from "./evidence.model";
 import { AuthService } from "../auth/auth.service";
 
 import multer from "multer";
+import { StudentsOnSubjectsService } from "../students-on-subjects/students-on-subjects.service";
 
 const upload = multer({ dest: "uploads/" });
 
@@ -19,6 +20,22 @@ evidenceRouter.post(
   upload.single("file"),
   async (req: Request, res: Response) => {
     try {
+      const { subjectId } = req.query;
+      const { userId } = res.locals.jwtData;
+
+      // Check if the student is already registered in the subject
+      const isStudentOnSubject =
+        await StudentsOnSubjectsService.verifyStudentInSubject(
+          userId,
+          subjectId.toString()
+        );
+      if (!isStudentOnSubject) {
+        return res
+          .status(400)
+          .json({ message: "Student is not registered in the subject" });
+      }
+
+      // Check file format and number of evidences uploaded on the subject
       const file = req.file;
       if (!file) {
         return res.status(400).json({ message: "No file uploaded" });
@@ -33,9 +50,6 @@ evidenceRouter.post(
           .json({ message: "Invalid file format. Must be png, jpg or pdf!" });
       }
 
-      const { subjectId } = req.query;
-      const { userId } = res.locals.jwtData;
-
       const numberOfEvidencesOnSubject =
         await evidenceService.getNumberOfEvidencesOnSubject(
           userId,
@@ -48,6 +62,7 @@ evidenceRouter.post(
         });
       }
 
+      // Create evidence
       const newEvidence = await evidenceService.createEvidence({
         file_name,
         size: size.toString(),
