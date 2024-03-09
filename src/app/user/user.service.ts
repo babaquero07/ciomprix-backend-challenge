@@ -53,4 +53,32 @@ export class UserService {
       throw new Error("Error getting user with id: " + id);
     }
   }
+
+  async getStudents() {
+    try {
+      const students = await prisma.user.findMany({
+        where: {
+          role: "student",
+        },
+        select: {
+          id: true,
+          first_name: true,
+          last_name: true,
+          email: true,
+          dni: true,
+          phone: true,
+          birth_date: true,
+        },
+        orderBy: {
+          last_name: "asc",
+        },
+      });
+
+      return students;
+    } catch (error) {
+      console.log(error);
+
+      throw new Error("Error getting students");
+    }
+  }
 }

@@ -140,4 +140,23 @@ userRouter.get("/logout", verifyToken, async (req: Request, res: Response) => {
   }
 });
 
+userRouter.get(
+  "/",
+  verifyToken,
+  AuthService.checkAdminAuthorization,
+  async (req: Request, res: Response) => {
+    try {
+      const students = await userService.getStudents();
+
+      return res.status(200).send({ ok: true, students });
+    } catch (error) {
+      console.log(error);
+
+      return res
+        .status(500)
+        .send({ ok: false, message: "Internal server error" });
+    }
+  }
+);
+
 export default userRouter;
