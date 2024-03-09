@@ -141,7 +141,7 @@ userRouter.get("/logout", verifyToken, async (req: Request, res: Response) => {
 });
 
 userRouter.get(
-  "/",
+  "/students",
   verifyToken,
   AuthService.checkAdminAuthorization,
   async (req: Request, res: Response) => {
