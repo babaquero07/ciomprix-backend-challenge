@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import {
   body,
+  param,
   query,
   ValidationChain,
   validationResult,
@@ -92,6 +93,14 @@ export const studentsOnSubjectsValidator = [
 
 export const newEvidenceValidator = [
   query("subjectId")
+    .notEmpty()
+    .withMessage("Subject id is required")
+    .trim()
+    .isString(),
+];
+
+export const countEvidencesValidator = [
+  param("subjectId")
     .notEmpty()
     .withMessage("Subject id is required")
     .trim()

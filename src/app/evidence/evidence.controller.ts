@@ -1,7 +1,11 @@
 import { Request, Response, Router } from "express";
 
 import { EvidenceService } from "./evidence.service";
-import { validate, newEvidenceValidator } from "../../utils/validators";
+import {
+  validate,
+  newEvidenceValidator,
+  countEvidencesValidator,
+} from "../../utils/validators";
 
 import { Format } from "./evidence.model";
 import { AuthService } from "../auth/auth.service";
@@ -90,6 +94,26 @@ evidenceRouter.get(
       const evidences = await evidenceService.getAllEvidences();
 
       return res.status(200).json({ ok: true, evidences });
+    } catch (error) {
+      console.log(error);
+
+      return res.status(500).json({ message: "Internal server error" });
+    }
+  }
+);
+
+evidenceRouter.get(
+  "/count-by-subject/:subjectId",
+  AuthService.checkAdminAuthorization,
+  validate(countEvidencesValidator),
+  async (req: Request, res: Response) => {
+    try {
+      const { subjectId } = req.params;
+
+      const numberOfEvidences =
+        await evidenceService.getNumberOfEvidencesBySubject(subjectId);
+
+      return res.status(200).json({ ok: true, numberOfEvidences });
     } catch (error) {
       console.log(error);
 
