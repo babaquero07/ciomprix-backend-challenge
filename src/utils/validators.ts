@@ -64,7 +64,7 @@ export const signupValidator = [
 export const loginValidator = [
   body("email")
     .isEmail()
-    .withMessage("Email is required")
+    .withMessage("Invalid email address")
     .normalizeEmail()
     .isString(),
   body("password")
