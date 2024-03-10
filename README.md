@@ -12,3 +12,4 @@
 8. Import postman collection [recommendend]
 9. Go to users > execute login request.
 10. Test the API.
+11. To seed the database. Chante to the branch developer and execut npm run dev > Execute seed-database on Postman.
