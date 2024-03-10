@@ -6,6 +6,58 @@ import { SubjectService } from "./subject.service";
 
 const subjectRouter = Router();
 
+/**
+ * @swagger
+ * /api/subject/new-subject:
+ *   post:
+ *     summary: Create a new subject
+ *     description: Endpoint to create a new subject.
+ *     tags:
+ *       - Subject
+ *     security:
+ *       - BearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: Subject created successfully
+ *         content:
+ *           application/json:
+ *             example:
+ *               ok: true
+ *               message: Subject created
+ *               newSubject:
+ *                 id: 1
+ *                 name: Biology
+ *       401:
+ *         description: Unauthorized - Token missing or invalid
+ *         content:
+ *           application/json:
+ *             example:
+ *               ok: false
+ *               message: Unauthorized
+ *       403:
+ *         description: Forbidden - User not authorized
+ *         content:
+ *           application/json:
+ *             example:
+ *               ok: false
+ *               message: Forbidden
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             example:
+ *               ok: false
+ *               message: Internal server error
+ */
 subjectRouter.post(
   "/new-subject",
   validate(subjectValidator),
