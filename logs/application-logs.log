@@ -1,0 +1,402 @@
+{
+    "level": "info",
+    "logId": "2a0a26f78074d5480e9ec0d992ef2dd4",
+    "timestamp": "Mar-09-2024 19:51:36",
+    "appInfo": {
+        "appVersion": "1.0.0",
+        "proccessId": 22180
+    },
+    "message": "Resource created successfully",
+    "data": {
+        "request": {
+            "headers": {
+                "content-type": "application/json",
+                "user-agent": "PostmanRuntime/7.36.3",
+                "accept": "*/*",
+                "cache-control": "no-cache",
+                "postman-token": "5cffcbf4-7627-4a8f-abed-4473ce87630b",
+                "host": "localhost:8080",
+                "accept-encoding": "gzip, deflate, br",
+                "connection": "keep-alive",
+                "content-length": "82"
+            },
+            "host": "localhost:8080",
+            "baseUrl": "/api/users",
+            "url": "/login",
+            "method": "POST",
+            "body": {
+                "email": "alexanderbaquero@gmail.com",
+                "password": "@Alexander-123"
+            },
+            "params": {},
+            "query": {},
+            "clientIp": "::1"
+        },
+        "response": {
+            "headers": {
+                "x-powered-by": "Express",
+                "access-control-allow-origin": "*",
+                "access-control-allow-credentials": "true",
+                "set-cookie": [
+                    "auth_token=s%3A.hjV%2FAWS2%2FocruXr6rivUb3R6XH9k53%2B9hBBt0yydfXw; Domain=localhost; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly",
+                    "auth_token=s%3AeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkMGJiN2JhMi1iYWZhLTQ4NjItYWU2Ni01YTNiYWFmMjc1YmQiLCJlbWFpbCI6ImFsZXhhbmRlcmJhcXVlcm9AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzEwMDMxODk2LCJleHAiOjE3MTAwMzIxOTZ9.Qp_NXxPAR7EWioI-Q_e479Ub0L0CdcE6D_aNS1sL4y0.4y7FfLSQZKPpNxKll%2FrwApwKFvpbnETyG%2BOV8sj1gL0; Domain=localhost; Path=/; Expires=Sun, 10 Mar 2024 00:56:36 GMT; HttpOnly"
+                ]
+            },
+            "statusCode": 200,
+            "requestDuration": "0.152s",
+            "body": {
+                "ok": true,
+                "message": "User logged in",
+                "user": {
+                    "id": "d0bb7ba2-bafa-4862-ae66-5a3baaf275bd",
+                    "first_name": "Alexander",
+                    "email": "alexanderbaquero@gmail.com",
+                    "role": "admin"
+                }
+            }
+        }
+    }
+}
+{
+    "level": "info",
+    "logId": "7f8e280de52839d569c879e63a58d0b8",
+    "timestamp": "Mar-09-2024 19:54:36",
+    "appInfo": {
+        "appVersion": "1.0.0",
+        "proccessId": 25596
+    },
+    "message": "Resource created successfully",
+    "data": {
+        "request": {
+            "headers": {
+                "content-type": "application/json",
+                "user-agent": "PostmanRuntime/7.36.3",
+                "accept": "*/*",
+                "cache-control": "no-cache",
+                "postman-token": "0a6f126f-9a93-4197-b637-1852db1113c2",
+                "host": "localhost:8080",
+                "accept-encoding": "gzip, deflate, br",
+                "connection": "keep-alive",
+                "content-length": "82",
+                "cookie": "auth_token=s%3AeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkMGJiN2JhMi1iYWZhLTQ4NjItYWU2Ni01YTNiYWFmMjc1YmQiLCJlbWFpbCI6ImFsZXhhbmRlcmJhcXVlcm9AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzEwMDMxODk2LCJleHAiOjE3MTAwMzIxOTZ9.Qp_NXxPAR7EWioI-Q_e479Ub0L0CdcE6D_aNS1sL4y0.4y7FfLSQZKPpNxKll%2FrwApwKFvpbnETyG%2BOV8sj1gL0"
+            },
+            "host": "localhost:8080",
+            "baseUrl": "/api/users",
+            "url": "/login",
+            "method": "POST",
+            "body": {
+                "email": "alexanderbaquero@gmail.com",
+                "password": "@Alexander-123"
+            },
+            "params": {},
+            "query": {},
+            "clientIp": "::1"
+        },
+        "response": {
+            "headers": {
+                "x-powered-by": "Express",
+                "access-control-allow-origin": "*",
+                "access-control-allow-credentials": "true",
+                "set-cookie": [
+                    "auth_token=s%3A.hjV%2FAWS2%2FocruXr6rivUb3R6XH9k53%2B9hBBt0yydfXw; Domain=localhost; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly",
+                    "auth_token=s%3AeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkMGJiN2JhMi1iYWZhLTQ4NjItYWU2Ni01YTNiYWFmMjc1YmQiLCJlbWFpbCI6ImFsZXhhbmRlcmJhcXVlcm9AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzEwMDMyMDc2LCJleHAiOjE3MTAwMzIzNzZ9.FUi2rFgWaJgRmYgUvCFoxyM5WZiRN_o8cIEw9cR2zp0.RTXoQ0mN6Gzr%2BuAafMo%2BqFUAvCSD0DPUOHey9C5f88g; Domain=localhost; Path=/; Expires=Sun, 10 Mar 2024 00:59:36 GMT; HttpOnly"
+                ]
+            },
+            "statusCode": 200,
+            "requestDuration": "0.158s",
+            "body": {
+                "ok": true,
+                "message": "User logged in",
+                "user": {
+                    "id": "d0bb7ba2-bafa-4862-ae66-5a3baaf275bd",
+                    "first_name": "Alexander",
+                    "email": "alexanderbaquero@gmail.com",
+                    "role": "admin"
+                }
+            }
+        }
+    }
+}
+{
+    "level": "info",
+    "logId": "9cc8c2a194ddeb1d53f2baa722ffbd34",
+    "timestamp": "Mar-09-2024 19:56:23",
+    "appInfo": {
+        "appVersion": "1.0.0",
+        "proccessId": 25596
+    },
+    "message": "Resource created successfully",
+    "data": {
+        "request": {
+            "headers": {
+                "content-type": "application/json",
+                "user-agent": "PostmanRuntime/7.36.3",
+                "accept": "*/*",
+                "cache-control": "no-cache",
+                "postman-token": "14bf84bc-3af3-45eb-9242-cff232f1c2e3",
+                "host": "localhost:8080",
+                "accept-encoding": "gzip, deflate, br",
+                "connection": "keep-alive",
+                "content-length": "82",
+                "cookie": "auth_token=s%3AeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkMGJiN2JhMi1iYWZhLTQ4NjItYWU2Ni01YTNiYWFmMjc1YmQiLCJlbWFpbCI6ImFsZXhhbmRlcmJhcXVlcm9AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzEwMDMyMDc2LCJleHAiOjE3MTAwMzIzNzZ9.FUi2rFgWaJgRmYgUvCFoxyM5WZiRN_o8cIEw9cR2zp0.RTXoQ0mN6Gzr%2BuAafMo%2BqFUAvCSD0DPUOHey9C5f88g"
+            },
+            "host": "localhost:8080",
+            "baseUrl": "/api/users",
+            "url": "/login",
+            "method": "POST",
+            "body": {
+                "email": "alexanderbaquero@gmail.com",
+                "password": "@Alexander-123"
+            },
+            "params": {},
+            "query": {},
+            "clientIp": "::1"
+        },
+        "response": {
+            "headers": {
+                "x-powered-by": "Express",
+                "access-control-allow-origin": "*",
+                "access-control-allow-credentials": "true",
+                "set-cookie": [
+                    "auth_token=s%3A.hjV%2FAWS2%2FocruXr6rivUb3R6XH9k53%2B9hBBt0yydfXw; Domain=localhost; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT; HttpOnly",
+                    "auth_token=s%3AeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkMGJiN2JhMi1iYWZhLTQ4NjItYWU2Ni01YTNiYWFmMjc1YmQiLCJlbWFpbCI6ImFsZXhhbmRlcmJhcXVlcm9AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzEwMDMyMTgzLCJleHAiOjE3MTAwMzI0ODN9.8tiPSkRozomRss0C8DpVp27BpaQoqfmCgopwSvXlXXE.MmhvJNJGfP0HnbNZQz%2BApETP9jNaw7CjYabta19ca1w; Domain=localhost; Path=/; Expires=Sun, 10 Mar 2024 01:01:23 GMT; HttpOnly"
+                ]
+            },
+            "statusCode": 200,
+            "requestDuration": "0.066s",
+            "body": {
+                "ok": true,
+                "message": "User logged in",
+                "user": {
+                    "id": "d0bb7ba2-bafa-4862-ae66-5a3baaf275bd",
+                    "first_name": "Alexander",
+                    "email": "alexanderbaquero@gmail.com",
+                    "role": "admin"
+                }
+            }
+        }
+    }
+}
+{
+    "level": "info",
+    "logId": "14fd0233373b5efd334ac4eec841cc76",
+    "timestamp": "Mar-09-2024 19:56:27",
+    "appInfo": {
+        "appVersion": "1.0.0",
+        "proccessId": 25596
+    },
+    "message": "Resource retrieved successfully",
+    "data": {
+        "request": {
+            "headers": {
+                "content-type": "application/json",
+                "user-agent": "PostmanRuntime/7.36.3",
+                "accept": "*/*",
+                "cache-control": "no-cache",
+                "postman-token": "6acba167-cf20-4092-a11f-cd25737971a7",
+                "host": "localhost:8080",
+                "accept-encoding": "gzip, deflate, br",
+                "connection": "keep-alive",
+                "content-length": "82",
+                "cookie": "auth_token=s%3AeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkMGJiN2JhMi1iYWZhLTQ4NjItYWU2Ni01YTNiYWFmMjc1YmQiLCJlbWFpbCI6ImFsZXhhbmRlcmJhcXVlcm9AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzEwMDMyMTgzLCJleHAiOjE3MTAwMzI0ODN9.8tiPSkRozomRss0C8DpVp27BpaQoqfmCgopwSvXlXXE.MmhvJNJGfP0HnbNZQz%2BApETP9jNaw7CjYabta19ca1w"
+            },
+            "host": "localhost:8080",
+            "baseUrl": "/api/users",
+            "url": "/students",
+            "method": "GET",
+            "body": {
+                "email": "alexanderbaquero@gmail.com",
+                "password": "@Alexander-123"
+            },
+            "params": {},
+            "query": {},
+            "clientIp": "::1"
+        },
+        "response": {
+            "headers": {
+                "x-powered-by": "Express",
+                "access-control-allow-origin": "*",
+                "access-control-allow-credentials": "true"
+            },
+            "statusCode": 200,
+            "requestDuration": "0.008s",
+            "body": {
+                "ok": true,
+                "students": [
+                    {
+                        "id": "ca3f8a2d-eabb-4ea6-9a59-3ddfa228116b",
+                        "first_name": "Juan",
+                        "last_name": "Perez",
+                        "email": "juanperez@gmail.com",
+                        "dni": "1037438956",
+                        "phone": "3104252789",
+                        "birth_date": "1993-11-02T05:00:00.000Z"
+                    }
+                ]
+            }
+        }
+    }
+}
+{
+    "level": "info",
+    "logId": "827772faf761af001ebbbe51a367bc3b",
+    "timestamp": "Mar-09-2024 19:56:29",
+    "appInfo": {
+        "appVersion": "1.0.0",
+        "proccessId": 25596
+    },
+    "message": "Resource retrieved successfully",
+    "data": {
+        "request": {
+            "headers": {
+                "content-type": "application/json",
+                "user-agent": "PostmanRuntime/7.36.3",
+                "accept": "*/*",
+                "cache-control": "no-cache",
+                "postman-token": "493abb23-04f1-45b7-b550-2e9892995060",
+                "host": "localhost:8080",
+                "accept-encoding": "gzip, deflate, br",
+                "connection": "keep-alive",
+                "content-length": "82",
+                "cookie": "auth_token=s%3AeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkMGJiN2JhMi1iYWZhLTQ4NjItYWU2Ni01YTNiYWFmMjc1YmQiLCJlbWFpbCI6ImFsZXhhbmRlcmJhcXVlcm9AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzEwMDMyMTgzLCJleHAiOjE3MTAwMzI0ODN9.8tiPSkRozomRss0C8DpVp27BpaQoqfmCgopwSvXlXXE.MmhvJNJGfP0HnbNZQz%2BApETP9jNaw7CjYabta19ca1w"
+            },
+            "host": "localhost:8080",
+            "baseUrl": "/api/users",
+            "url": "/students-count",
+            "method": "GET",
+            "body": {
+                "email": "alexanderbaquero@gmail.com",
+                "password": "@Alexander-123"
+            },
+            "params": {},
+            "query": {},
+            "clientIp": "::1"
+        },
+        "response": {
+            "headers": {
+                "x-powered-by": "Express",
+                "access-control-allow-origin": "*",
+                "access-control-allow-credentials": "true"
+            },
+            "statusCode": 200,
+            "requestDuration": "0.005s",
+            "body": {
+                "ok": true,
+                "numberOfStudents": 1
+            }
+        }
+    }
+}
+{
+    "level": "info",
+    "logId": "9f8b7a3f469d5284b107cbc39bb1e6be",
+    "timestamp": "Mar-09-2024 19:56:31",
+    "appInfo": {
+        "appVersion": "1.0.0",
+        "proccessId": 25596
+    },
+    "message": "Resource retrieved successfully",
+    "data": {
+        "request": {
+            "headers": {
+                "content-type": "application/json",
+                "user-agent": "PostmanRuntime/7.36.3",
+                "accept": "*/*",
+                "cache-control": "no-cache",
+                "postman-token": "e5c13f11-ddf4-49d6-b923-7cf0166e721c",
+                "host": "localhost:8080",
+                "accept-encoding": "gzip, deflate, br",
+                "connection": "keep-alive",
+                "content-length": "82",
+                "cookie": "auth_token=s%3AeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkMGJiN2JhMi1iYWZhLTQ4NjItYWU2Ni01YTNiYWFmMjc1YmQiLCJlbWFpbCI6ImFsZXhhbmRlcmJhcXVlcm9AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzEwMDMyMTgzLCJleHAiOjE3MTAwMzI0ODN9.8tiPSkRozomRss0C8DpVp27BpaQoqfmCgopwSvXlXXE.MmhvJNJGfP0HnbNZQz%2BApETP9jNaw7CjYabta19ca1w"
+            },
+            "host": "localhost:8080",
+            "baseUrl": "/api/users",
+            "url": "/top-students",
+            "method": "GET",
+            "body": {
+                "email": "alexanderbaquero@gmail.com",
+                "password": "@Alexander-123"
+            },
+            "params": {},
+            "query": {},
+            "clientIp": "::1"
+        },
+        "response": {
+            "headers": {
+                "x-powered-by": "Express",
+                "access-control-allow-origin": "*",
+                "access-control-allow-credentials": "true"
+            },
+            "statusCode": 200,
+            "requestDuration": "0.008s",
+            "body": {
+                "ok": true,
+                "topStudents": [
+                    {
+                        "id": "ca3f8a2d-eabb-4ea6-9a59-3ddfa228116b",
+                        "first_name": "Juan",
+                        "last_name": "Perez",
+                        "email": "juanperez@gmail.com",
+                        "evidences": [
+                            {
+                                "id": "25edd5a2-5484-4a68-b214-a01d3efc0c35",
+                                "file_name": "profilePicture.png",
+                                "format": "png"
+                            },
+                            {
+                                "id": "4aa0b564-3eb1-452d-b801-6c8947f0eae5",
+                                "file_name": "profileLogo.png",
+                                "format": "jpg"
+                            }
+                        ],
+                        "numberOfEvidences": 2
+                    }
+                ]
+            }
+        }
+    }
+}
+{
+    "level": "info",
+    "logId": "6d88b450ca5102936a8a049b62a0ae98",
+    "timestamp": "Mar-09-2024 19:56:32",
+    "appInfo": {
+        "appVersion": "1.0.0",
+        "proccessId": 25596
+    },
+    "message": "Resource retrieved successfully",
+    "data": {
+        "request": {
+            "headers": {
+                "user-agent": "PostmanRuntime/7.36.3",
+                "accept": "*/*",
+                "cache-control": "no-cache",
+                "postman-token": "6696f2cd-3b8f-45ff-828a-3b596267e697",
+                "host": "localhost:8080",
+                "accept-encoding": "gzip, deflate, br",
+                "connection": "keep-alive",
+                "cookie": "auth_token=s%3AeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJkMGJiN2JhMi1iYWZhLTQ4NjItYWU2Ni01YTNiYWFmMjc1YmQiLCJlbWFpbCI6ImFsZXhhbmRlcmJhcXVlcm9AZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzEwMDMyMTgzLCJleHAiOjE3MTAwMzI0ODN9.8tiPSkRozomRss0C8DpVp27BpaQoqfmCgopwSvXlXXE.MmhvJNJGfP0HnbNZQz%2BApETP9jNaw7CjYabta19ca1w"
+            },
+            "host": "localhost:8080",
+            "baseUrl": "/api/evidences",
+            "url": "/percentage-by-file-type",
+            "method": "GET",
+            "body": {},
+            "params": {},
+            "query": {},
+            "clientIp": "::1"
+        },
+        "response": {
+            "headers": {
+                "x-powered-by": "Express",
+                "access-control-allow-origin": "*",
+                "access-control-allow-credentials": "true",
+                "content-type": "application/json; charset=utf-8"
+            },
+            "statusCode": 200,
+            "requestDuration": "0.005s",
+            "body": "{\"ok\":true,\"percentageByFileType\":[{\"format\":\"jpg\",\"percentage\":\"14%\"},{\"format\":\"png\",\"percentage\":\"86%\"}]}"
+        }
+    }
+}
