@@ -1,8 +1,11 @@
+import { config } from "dotenv";
+
 import swaggerJsDoc from "swagger-jsdoc";
 import swaggerUi from "swagger-ui-express";
 
-// Metadata info about our API
+config();
 
+// Metadata info about our API
 const options = {
   definition: {
     info: {
@@ -28,11 +31,13 @@ const swaggerSpec = swaggerJsDoc(options);
 
 // Function to setup our docs
 export const swaggerDocs = (app, port) => {
-  app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
-  app.get("/api/docs.json", (req, res) => {
-    res.setHeader("Content-Type", "application/json");
-    res.send(swaggerSpec);
-  });
+  if (process.env.NODE_ENV !== "production") {
+    app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+    app.get("/api/docs.json", (req, res) => {
+      res.setHeader("Content-Type", "application/json");
+      res.send(swaggerSpec);
+    });
 
-  console.log(`📑 Docs are available at http://localhost:${port}/api/docs`);
+    console.log(`📑 Docs are available at http://localhost:${port}/api/docs`);
+  }
 };
