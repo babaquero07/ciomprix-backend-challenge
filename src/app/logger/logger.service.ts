@@ -2,6 +2,11 @@ import winston from "winston";
 import { randomBytes } from "crypto";
 import DailyRotateFile from "winston-daily-rotate-file";
 
+import fs from "fs";
+import readline from "readline";
+
+const logFilePath = "logs/application-logs.log";
+
 const { combine, timestamp, json, printf } = winston.format;
 
 const timestampFormat = "MMM-DD-YYYY HH:mm:ss";
@@ -49,3 +54,15 @@ export const httpLogger = winston.createLogger({
     }),
   ],
 });
+
+export const getLastLogs = async () => {
+  try {
+    const logContent = fs.readFileSync(logFilePath, "utf8");
+
+    return logContent;
+  } catch (error) {
+    console.log(error);
+
+    throw new Error("Error while reading logs");
+  }
+};
