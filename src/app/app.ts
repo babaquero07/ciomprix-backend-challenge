@@ -24,6 +24,7 @@ app.use(responseInterceptor);
 // Console logger
 app.use(morgan("dev"));
 
+// Routes
 app.use("/api", routes);
 
 export default app;
