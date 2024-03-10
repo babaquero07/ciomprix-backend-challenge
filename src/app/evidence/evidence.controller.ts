@@ -18,6 +18,79 @@ const upload = multer({ dest: "uploads/" });
 const evidenceRouter = Router();
 const evidenceService = new EvidenceService();
 
+/**
+ * @swagger
+ * /api/evidence/upload:
+ *   post:
+ *     summary: Upload evidence
+ *     description: Endpoint to upload evidence for a subject.
+ *     tags:
+ *       - Evidence
+ *     security:
+ *       - BearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               file:
+ *                 type: string
+ *                 format: binary
+ *             required:
+ *               - file
+ *     parameters:
+ *       - in: query
+ *         name: subjectId
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: ID of the subject for which evidence is being uploaded
+ *     responses:
+ *       201:
+ *         description: Evidence uploaded successfully
+ *         content:
+ *           application/json:
+ *             example:
+ *               ok: true
+ *               message: Evidence created
+ *               newEvidence:
+ *                 id: 1
+ *                 file_name: "evidence1.pdf"
+ *                 size: "1024"
+ *                 format: "pdf"
+ *                 userId: 1
+ *                 subjectId: "subject123"
+ *       400:
+ *         description: Bad Request - Invalid file format or no file uploaded
+ *         content:
+ *           application/json:
+ *             example:
+ *               ok: false
+ *               message: Invalid file format. Must be png, jpg, or pdf! (or) No file uploaded
+ *       401:
+ *         description: Unauthorized - Token missing or invalid
+ *         content:
+ *           application/json:
+ *             example:
+ *               ok: false
+ *               message: Unauthorized
+ *       422:
+ *         description: Unprocessable Entity - Exceeded the limit of 5 evidences for a subject
+ *         content:
+ *           application/json:
+ *             example:
+ *               ok: false
+ *               message: You can't upload more than 5 evidences for a subject
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             example:
+ *               ok: false
+ *               message: Internal server error
+ */
 evidenceRouter.post(
   "/upload",
   validate(newEvidenceValidator),
@@ -86,6 +159,58 @@ evidenceRouter.post(
   }
 );
 
+/**
+ * @swagger
+ * /api/evidence:
+ *   get:
+ *     summary: Get all evidences
+ *     description: Endpoint to retrieve all evidences.
+ *     tags:
+ *       - Evidence
+ *     security:
+ *       - BearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Evidences retrieved successfully
+ *         content:
+ *           application/json:
+ *             example:
+ *               ok: true
+ *               evidences:
+ *                 - id: 1
+ *                   file_name: "evidence1.pdf"
+ *                   size: "1024"
+ *                   format: "pdf"
+ *                   userId: 1
+ *                   subjectId: "subject123"
+ *                 - id: 2
+ *                   file_name: "evidence2.jpg"
+ *                   size: "2048"
+ *                   format: "jpg"
+ *                   userId: 2
+ *                   subjectId: "subject456"
+ *       401:
+ *         description: Unauthorized - Token missing or invalid
+ *         content:
+ *           application/json:
+ *             example:
+ *               ok: false
+ *               message: Unauthorized
+ *       403:
+ *         description: Forbidden - User not authorized
+ *         content:
+ *           application/json:
+ *             example:
+ *               ok: false
+ *               message: Forbidden
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             example:
+ *               ok: false
+ *               message: Internal server error
+ */
 evidenceRouter.get(
   "/",
   AuthService.checkAdminAuthorization,
@@ -102,6 +227,53 @@ evidenceRouter.get(
   }
 );
 
+/**
+ * @swagger
+ * /api/evidence/count-by-subject/{subjectId}:
+ *   get:
+ *     summary: Get number of evidences by subject
+ *     description: Endpoint to retrieve the number of evidences for a specific subject.
+ *     tags:
+ *       - Evidence
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: subjectId
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: ID of the subject for which the number of evidences is being retrieved
+ *     responses:
+ *       200:
+ *         description: Number of evidences retrieved successfully
+ *         content:
+ *           application/json:
+ *             example:
+ *               ok: true
+ *               numberOfEvidences: 10
+ *       401:
+ *         description: Unauthorized - Token missing or invalid
+ *         content:
+ *           application/json:
+ *             example:
+ *               ok: false
+ *               message: Unauthorized
+ *       403:
+ *         description: Forbidden - User not authorized
+ *         content:
+ *           application/json:
+ *             example:
+ *               ok: false
+ *               message: Forbidden
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             example:
+ *               ok: false
+ *               message: Internal server error
+ */
 evidenceRouter.get(
   "/count-by-subject/:subjectId",
   AuthService.checkAdminAuthorization,
@@ -122,6 +294,49 @@ evidenceRouter.get(
   }
 );
 
+/**
+ * @swagger
+ * /api/evidence/percentage-by-file-type:
+ *   get:
+ *     summary: Get percentage of evidences by file type
+ *     description: Endpoint to retrieve the percentage of evidences based on their file types.
+ *     tags:
+ *       - Evidence
+ *     security:
+ *       - BearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Percentage of evidences retrieved successfully
+ *         content:
+ *           application/json:
+ *             example:
+ *               ok: true
+ *               percentageByFileType:
+ *                 pdf: 50
+ *                 png: 30
+ *                 jpg: 20
+ *       401:
+ *         description: Unauthorized - Token missing or invalid
+ *         content:
+ *           application/json:
+ *             example:
+ *               ok: false
+ *               message: Unauthorized
+ *       403:
+ *         description: Forbidden - User not authorized
+ *         content:
+ *           application/json:
+ *             example:
+ *               ok: false
+ *               message: Forbidden
+ *       500:
+ *         description: Internal server error
+ *         content:
+ *           application/json:
+ *             example:
+ *               ok: false
+ *               message: Internal server error
+ */
 evidenceRouter.get(
   "/percentage-by-file-type",
   AuthService.checkAdminAuthorization,
