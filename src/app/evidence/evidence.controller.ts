@@ -122,4 +122,21 @@ evidenceRouter.get(
   }
 );
 
+evidenceRouter.get(
+  "/percentage-by-file-type",
+  AuthService.checkAdminAuthorization,
+  async (req: Request, res: Response) => {
+    try {
+      const percentageByFileType =
+        await evidenceService.getPercentageByFileType();
+
+      return res.status(200).json({ ok: true, percentageByFileType });
+    } catch (error) {
+      console.log(error);
+
+      return res.status(500).json({ message: "Internal server error" });
+    }
+  }
+);
+
 export default evidenceRouter;

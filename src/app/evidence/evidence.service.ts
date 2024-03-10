@@ -80,4 +80,30 @@ export class EvidenceService {
       throw new Error("Error getting number of evidences by subject");
     }
   }
+
+  async getPercentageByFileType() {
+    try {
+      const formatCounts = await prisma.evidence.groupBy({
+        by: ["format"],
+        _count: true,
+      });
+
+      const totalEvidences = formatCounts.reduce(
+        (acc, formatCount) => acc + formatCount._count,
+        0
+      );
+
+      const percentageByFormat = formatCounts.map((formatCount) => ({
+        format: formatCount.format,
+        percentage:
+          Math.round((formatCount._count / totalEvidences) * 100) + "%",
+      }));
+
+      return percentageByFormat;
+    } catch (error) {
+      console.log(error);
+
+      throw new Error("Error getting percentage by file type");
+    }
+  }
 }
