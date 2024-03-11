@@ -13,8 +13,17 @@ const COOKIE_SECRET = process.env.COOKIE_SECRET;
 
 const app = express();
 
+const allowedOrings = [
+  "https://ciomprix-backend-challenge-production.up.railway.app",
+  "http://localhost",
+];
+const options: cors.CorsOptions = {
+  origin: allowedOrings,
+  credentials: true,
+};
+
 // Middlewares
-app.use(cors({ credentials: true }));
+app.use(cors(options));
 app.use(express.json());
 app.use(cookieParser(COOKIE_SECRET));
 

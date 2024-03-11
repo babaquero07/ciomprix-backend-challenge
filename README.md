@@ -1,6 +1,6 @@
 # Ciomprix - Backend Challenge
 
-## Backend
+## Development
 
 1. Clone the repo
 2. Config .env file.
@@ -14,3 +14,7 @@
 10. Go to users > execute login request.
 11. Test the API.
 12. To seed the database, check out the developer branch, navigate to Postman, and execute the createDB operation
+
+## Production
+
+1. To test the API on production. Use the url: https://ciomprix-backend-challenge-production.up.railway.app/api
