@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/app/index.js\" ",
     "start": "node dist/app/index.js",
-    "build": "tsc",
+    "build": "npm install && tsc",
     "seed": "ts-node src/seed/seed-database.ts"
   },
   "keywords": [
